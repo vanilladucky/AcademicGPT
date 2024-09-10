@@ -13,7 +13,7 @@ load_dotenv()
 connection_string = st.secrets["CONNECTION_STRING"]
 database_name = st.secrets["DATABASE_NAME"]
 collection_name = st.secrets["COLLECTION_NAME"]
-CHROMA_PATH = "chroma"
+CHROMA_PATH = "chroma/chroma.sqlite3"
 
 if 'prev' not in st.session_state:
     st.session_state['prev'] = ''
