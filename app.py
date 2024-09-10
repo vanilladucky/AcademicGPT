@@ -24,11 +24,9 @@ if 'send_again' not in st.session_state:
 def populate_db(reset = False):
     print("====Populating DB!====")
     if reset == False:
-        populate(False)
-        subprocess.run(["python", "populate_database.py"])
+        subprocess.run(["python3", "populate_database.py"])
     elif reset == True:
-        populate(True)
-        subprocess.run(["python", "populate_database.py", "--reset"])
+        subprocess.run(["python3", "populate_database.py", "--reset"])
     return
 
 @st.cache_resource
@@ -43,7 +41,6 @@ except:
     raise Exception("Cannot connect to MongoDB")
 
 try:
-    populate_db(False)
     if os.path.exists(CHROMA_PATH) == False:
         with st.spinner("Loading the PDFs into a database..."):
             populate_db(False)
