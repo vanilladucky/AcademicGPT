@@ -31,8 +31,6 @@ def populate_db(reset = False):
         subprocess.run(["python", "populate_database.py", "--reset"])
     return
 
-# populate(True)
-
 @st.cache_resource
 def init_connection():
     print("====Connecting to DB====")
