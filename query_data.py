@@ -1,14 +1,23 @@
 import argparse
+import os
 from langchain_chroma import Chroma
 from langchain.prompts import ChatPromptTemplate
 from langchain_community.llms.ollama import Ollama
 from langchain.retrievers import ContextualCompressionRetriever
-from langchain.retrievers.document_compressors import FlashrankRerank
+from langchain.retrievers.document_compressors import FlashrankRerank, CrossEncoderReranker
+from langchain_community.cross_encoders import HuggingFaceCrossEncoder
+
+from langchain_huggingface import HuggingFaceEndpoint
+from langchain_core.prompts import PromptTemplate
+
+from dotenv import load_dotenv
 import time
 
 from get_embedding_function import get_embedding_function
 
 CHROMA_PATH = "chroma"
+load_dotenv()
+
 
 # Obtained from https://llama.meta.com/docs/model-cards-and-prompt-formats/meta-llama-3/
 PROMPT_TEMPLATE = """
@@ -38,22 +47,33 @@ def query_rag(query_text: str):
 
     # Search the DB.
     s = time.time()
-    # results = db.similarity_search_with_score(query_text, k=15)
+    # results = db.similarity_search_with_score(query_text, k=5)
     # Reranking
     retriever = db.as_retriever(search_kwargs={"k": 20})
-    compressor = FlashrankRerank(top_n = 5)
+
+    reranker_model = HuggingFaceCrossEncoder(model_name="cross-encoder/nli-deberta-v3-xsmall")
+    compressor = CrossEncoderReranker(model=reranker_model, top_n=5)
     compression_retriever = ContextualCompressionRetriever(
         base_compressor=compressor, base_retriever=retriever
     )
     results = compression_retriever.invoke(query_text)
+
     print(f"Time taken for similarity search and rereanking is {time.time() - s}s")
-
     context_text = "  \n  \n---  \n  \n".join([doc.page_content for doc in results])
-    prompt = PROMPT_TEMPLATE.format(context=context_text, question=query_text)
+    # prompt = PROMPT_TEMPLATE.format(context=context_text, question=query_text)
+    prompt = PromptTemplate.from_template(PROMPT_TEMPLATE)
 
-    model = Ollama(model="llama3.1:8b-instruct-q4_0")
+    # model = Ollama(model="llama3.1:8b-instruct-q4_0")
+    repo_id = "meta-llama/Meta-Llama-3-8B-Instruct"
+
+    llm = HuggingFaceEndpoint(
+        repo_id=repo_id,
+        temperature=0.5,
+        huggingfacehub_api_token=os.getenv('HF_TOKEN'),
+    )
+    model = prompt | llm
     s = time.time()
-    response_text = model.invoke(prompt)
+    response_text = model.invoke({'context': context_text, 'question': query_text})
     print(f"Time taken by LLM is {time.time() - s}s")
 
     sources = [doc.metadata.get("id", None) for doc in results]
@@ -62,8 +82,9 @@ def query_rag(query_text: str):
     sources.sort()
     sources = '  \n'.join(sources)
     formatted_response = f"{response_text} \n\n ============================================== \n\n The sources cited are: \n\n {sources}"
+    print(formatted_response)
     return formatted_response
 
 
 if __name__ == "__main__":
-    main()
+    main('What are several types of operating systems commonly found?')
