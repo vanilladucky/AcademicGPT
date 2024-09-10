@@ -18,7 +18,7 @@ import time
 
 from get_embedding_function import get_embedding_function
 
-CHROMA_PATH = "chroma"
+CHROMA_PATH = "chroma/chroma.sqlite3"
 load_dotenv()
 
 
