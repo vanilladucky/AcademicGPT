@@ -24,9 +24,9 @@ if 'send_again' not in st.session_state:
 def populate_db(reset = False):
     print("====Populating DB!====")
     if reset == False:
-        subprocess.run(["python3", "populate_database.py"])
+        subprocess.run(["python", "populate_database.py"])
     elif reset == True:
-        subprocess.run(["python3", "populate_database.py", "--reset"])
+        subprocess.run(["python", "populate_database.py", "--reset"])
     return
 
 populate_db(False)
