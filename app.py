@@ -10,9 +10,9 @@ import subprocess
 st.set_page_config(page_title="A more reliable LLM", page_icon=":books:")
 
 load_dotenv()
-connection_string = os.getenv("CONNECTION_STRING")
-database_name = os.getenv('DATABASE_NAME')
-collection_name = os.getenv('COLLECTION_NAME')
+connection_string = st.secrets["CONNECTION_STRING"]
+database_name = st.secrets["DATABASE_NAME"]
+collection_name = st.secrets["COLLECTION_NAME"]
 CHROMA_PATH = "chroma"
 
 if 'prev' not in st.session_state:

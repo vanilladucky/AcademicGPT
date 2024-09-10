@@ -72,7 +72,7 @@ def query_rag(query_text: str):
     llm = HuggingFaceEndpoint(
         repo_id=repo_id,
         temperature=0.5,
-        huggingfacehub_api_token=os.getenv('HF_TOKEN'),
+        huggingfacehub_api_token=st.secrets["HF_TOKEN"]
     )
     model = prompt | llm
     s = time.time()
