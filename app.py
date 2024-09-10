@@ -6,8 +6,10 @@ from populate_database import main as populate
 from pymongo.mongo_client import MongoClient
 from db import get_database, insert_db
 import subprocess
-
+import pysqlite3
+import sys
 st.set_page_config(page_title="A more reliable LLM", page_icon=":books:")
+sys.modules["sqlite3"] = sys.modules.pop("pysqlite3")
 
 load_dotenv()
 connection_string = os.getenv("CONNECTION_STRING")
