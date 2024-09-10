@@ -29,7 +29,7 @@ def populate_db(reset = False):
         subprocess.run(["python", "populate_database.py", "--reset"])
     return
 
-populate_db(False)
+populate(True)
 
 @st.cache_resource
 def init_connection():
