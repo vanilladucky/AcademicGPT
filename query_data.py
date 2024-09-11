@@ -52,7 +52,7 @@ def query_rag(query_text: str):
     s = time.time()
     # results = db.similarity_search_with_score(query_text, k=5)
     # Reranking
-    retriever = db.as_retriever(search_kwargs={"k": 20})
+    retriever = db.as_retriever(search_kwargs={"k": 10})
 
     reranker_model = HuggingFaceCrossEncoder(model_name="BAAI/bge-reranker-base")
     compressor = CrossEncoderReranker(model=reranker_model, top_n=5)
