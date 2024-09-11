@@ -54,7 +54,7 @@ def query_rag(query_text: str):
     # Reranking
     retriever = db.as_retriever(search_kwargs={"k": 30})
 
-    reranker_model = HuggingFaceCrossEncoder(model_name="BAAI/bge-reranker-large")
+    reranker_model = HuggingFaceCrossEncoder(model_name="BAAI/bge-reranker-base")
     compressor = CrossEncoderReranker(model=reranker_model, top_n=5)
     compression_retriever = ContextualCompressionRetriever(
         base_compressor=compressor, base_retriever=retriever

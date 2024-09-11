@@ -21,6 +21,7 @@ if 'prev' not in st.session_state:
 if 'send_again' not in st.session_state:
     st.session_state['send_again'] = True
 
+@st.cache_resource
 def populate_db(reset = False):
     print("====Populating DB!====")
     if reset == False:
