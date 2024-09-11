@@ -14,6 +14,12 @@
 ### The LLM uses its own vast knowledge and additionally relies on the lecture materials I have provided it to cross reference when answering questions.
 ### Users can also press the "Good" button when they think the answer provided is to their liking. When this happens, the question and the answer will be sent to our database, where future language models can be fine tuned to serve users more reliably.
 ### The website to use this service can be found [here](https://academicllm.streamlit.app/)
+### **OR** you can run it on your local device by following the instructions below
+
+# Local run
+=============
+`git clone https://github.com/vanilladucky/Academic_LLM.git`
+`streamlit run app.py`
 
 ## Contact:
 =============
