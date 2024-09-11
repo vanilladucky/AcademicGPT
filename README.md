@@ -20,6 +20,8 @@
 
 `git clone https://github.com/vanilladucky/Academic_LLM.git`
 
+`pip install requirements.txt`
+
 `streamlit run app.py`
 
 ## Contact:
