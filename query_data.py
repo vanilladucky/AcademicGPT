@@ -8,6 +8,7 @@ from langchain_community.cross_encoders import HuggingFaceCrossEncoder
 import streamlit as st
 from langchain_huggingface import HuggingFaceEndpoint
 from langchain_core.prompts import PromptTemplate
+import streamlit as st
 
 from dotenv import load_dotenv
 import time
@@ -29,6 +30,19 @@ You are a helpful AI assistant. Attend to the user's question after consulting t
 <|start_header_id|>assistant<|end_header_id|>
 """
 
+@st.cache_resource
+def get_model():
+    prompt = PromptTemplate.from_template(PROMPT_TEMPLATE)
+    repo_id = "meta-llama/Meta-Llama-3-8B-Instruct"
+
+    llm = HuggingFaceEndpoint(
+        repo_id=repo_id,
+        temperature=0.6,
+        huggingfacehub_api_token=os.getenv("HF_TOKEN")
+    )
+    model = prompt | llm
+    return model
+
 
 def main(query_text:str):
     # Create CLI.
@@ -46,44 +60,46 @@ def query_rag(query_text: str):
 
     # Search the DB.
     s = time.time()
-    results = db.similarity_search_with_score(query_text, k=5)
+    # results = db.similarity_search_with_score(query_text, k=5)
     # Reranking
-    """retriever = db.as_retriever(search_kwargs={"k": 20})
+    retriever = db.as_retriever(search_kwargs={"k": 20})
 
     reranker_model = HuggingFaceCrossEncoder(model_name="BAAI/bge-reranker-v2-m3")
     compressor = CrossEncoderReranker(model=reranker_model, top_n=5)
     compression_retriever = ContextualCompressionRetriever(
         base_compressor=compressor, base_retriever=retriever
     )
-    results = compression_retriever.invoke(query_text)"""
+    results = compression_retriever.invoke(query_text)
 
     print(f"Time taken for similarity search and rereanking is {time.time() - s}s")
-    context_text = "  \n  \n---  \n  \n".join([doc[0].page_content for doc in results])
+    context_text = "  \n  \n---  \n  \n".join([doc.page_content for doc in results])
     # prompt = PROMPT_TEMPLATE.format(context=context_text, question=query_text)
-    prompt = PromptTemplate.from_template(PROMPT_TEMPLATE)
+    # prompt = PromptTemplate.from_template(PROMPT_TEMPLATE)
 
     # model = Ollama(model="llama3.1:8b-instruct-q4_0")
-    repo_id = "meta-llama/Meta-Llama-3-8B-Instruct"
+    """repo_id = "meta-llama/Meta-Llama-3-8B-Instruct"
 
     llm = HuggingFaceEndpoint(
         repo_id=repo_id,
         temperature=0.6,
         huggingfacehub_api_token=os.getenv("HF_TOKEN")
     )
-    model = prompt | llm
+    model = prompt | llm"""
+    model = get_model()
     s = time.time()
     response_text = model.invoke({'context': context_text, 'question': query_text})
     print(f"Time taken by LLM is {time.time() - s}s")
 
-    sources = [doc[0].metadata.get("id", None) for doc in results]
+    sources = [doc.metadata.get("id", None) for doc in results]
     for idx, s in enumerate(sources):
         sources[idx] = '|'.join(s.split('|')[:-1])
     sources.sort()
     sources = '  \n'.join(sources)
     formatted_response = f"{response_text} \n\n ============================================== \n\n Some relevant materials are: \n\n {sources}"
-    print(formatted_response)
+    print('Answer sent!\n')
+    # print(formatted_response)
     return formatted_response
 
 
 if __name__ == "__main__":
-    main()
+    main('hi')
