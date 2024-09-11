@@ -52,10 +52,10 @@ def query_rag(query_text: str):
     s = time.time()
     # results = db.similarity_search_with_score(query_text, k=5)
     # Reranking
-    retriever = db.as_retriever(search_kwargs={"k": 20})
+    retriever = db.as_retriever(search_kwargs={"k": 30})
 
     reranker_model = HuggingFaceCrossEncoder(model_name="cross-encoder/nli-deberta-v3-xsmall")
-    compressor = CrossEncoderReranker(model=reranker_model, top_n=5)
+    compressor = CrossEncoderReranker(model=reranker_model, top_n=10)
     compression_retriever = ContextualCompressionRetriever(
         base_compressor=compressor, base_retriever=retriever
     )
