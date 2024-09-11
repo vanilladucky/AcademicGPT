@@ -8,8 +8,18 @@
 ### Well! Here is **Academic LLM** to help you in your academic journey. 
 ### Specifically tailored to Computer Science students in Nanyang Technological University, Academic LLM will not only be able to answer your questions more reliably, but will also be able to point you to the relevant lecture materials for you to explore further. 
 
-### Contact:
+# Usage 
+=============
+### You can ask any questions related to your studies, tutorial questions, lectures and you will be provided with a reliable answer and also the relevant materials.
+### The LLM uses its own vast knowledge and additionally relies on the lecture materials I have provided it to cross reference when answering questions.
+### Users can also press the "Good" button when they think the answer provided is to their liking. When this happens, the question and the answer will be sent to our database, where future language models can be fine tuned to serve users more reliably.
+### The website to use this service can be found [here](https://academicllm.streamlit.app/)
+
+## Contact:
+=============
+### If you have any queries, problems, or suggestions please do reach out to me via my email below.
 ##### KIMH0004@e.ntu.edu.sg
 
-### Credits:
-##### Heavily inspired from https://github.com/pixegami/rag-tutorial-v2. Please do go check the tutorial out if you are interested in RAG
+## Credits:
+=============
+##### Inspiration from https://github.com/pixegami/rag-tutorial-v2. Please do go check the tutorial out if you are interested in RAG
