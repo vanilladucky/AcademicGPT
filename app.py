@@ -10,9 +10,9 @@ import subprocess
 st.set_page_config(page_title="A more reliable LLM", page_icon=":books:")
 
 load_dotenv()
-connection_string = st.secrets["CONNECTION_STRING"]
-database_name = st.secrets["DATABASE_NAME"]
-collection_name = st.secrets["COLLECTION_NAME"]
+connection_string = os.getenv("CONNECTION_STRING")
+database_name = os.getenv("DATABASE_NAME")
+collection_name = os.getenv("COLLECTION_NAME")
 CHROMA_PATH = "chroma"
 
 if 'prev' not in st.session_state:
@@ -75,6 +75,9 @@ def main():
     st.markdown("- Introduction to Data Science and Artifical Intelligence")
     st.write("Any queries, problems, or comments, please contact me at KIMH0004@e.ntu.edu.sg")
     
+    reset_button = st.button("Reset database")
+    if reset_button:
+        populate_db(True)
     text_input = st.text_input("Ask question")
     response_text = ""
     if text_input and st.session_state['prev'] != text_input:

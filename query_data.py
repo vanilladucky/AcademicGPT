@@ -1,8 +1,4 @@
-import argparse
 import os
-import pysqlite3
-import sys
-sys.modules["sqlite3"] = sys.modules.pop("pysqlite3")
 from langchain_chroma import Chroma
 from langchain.prompts import ChatPromptTemplate
 from langchain_community.llms.ollama import Ollama
@@ -50,19 +46,19 @@ def query_rag(query_text: str):
 
     # Search the DB.
     s = time.time()
-    # results = db.similarity_search_with_score(query_text, k=5)
+    results = db.similarity_search_with_score(query_text, k=5)
     # Reranking
-    retriever = db.as_retriever(search_kwargs={"k": 10})
+    """retriever = db.as_retriever(search_kwargs={"k": 20})
 
-    reranker_model = HuggingFaceCrossEncoder(model_name="BAAI/bge-reranker-base")
+    reranker_model = HuggingFaceCrossEncoder(model_name="BAAI/bge-reranker-v2-m3")
     compressor = CrossEncoderReranker(model=reranker_model, top_n=5)
     compression_retriever = ContextualCompressionRetriever(
         base_compressor=compressor, base_retriever=retriever
     )
-    results = compression_retriever.invoke(query_text)
+    results = compression_retriever.invoke(query_text)"""
 
     print(f"Time taken for similarity search and rereanking is {time.time() - s}s")
-    context_text = "  \n  \n---  \n  \n".join([doc.page_content for doc in results])
+    context_text = "  \n  \n---  \n  \n".join([doc[0].page_content for doc in results])
     # prompt = PROMPT_TEMPLATE.format(context=context_text, question=query_text)
     prompt = PromptTemplate.from_template(PROMPT_TEMPLATE)
 
@@ -71,15 +67,15 @@ def query_rag(query_text: str):
 
     llm = HuggingFaceEndpoint(
         repo_id=repo_id,
-        temperature=0.5,
-        huggingfacehub_api_token=st.secrets["HF_TOKEN"]
+        temperature=0.6,
+        huggingfacehub_api_token=os.getenv("HF_TOKEN")
     )
     model = prompt | llm
     s = time.time()
     response_text = model.invoke({'context': context_text, 'question': query_text})
     print(f"Time taken by LLM is {time.time() - s}s")
 
-    sources = [doc.metadata.get("id", None) for doc in results]
+    sources = [doc[0].metadata.get("id", None) for doc in results]
     for idx, s in enumerate(sources):
         sources[idx] = '|'.join(s.split('|')[:-1])
     sources.sort()
