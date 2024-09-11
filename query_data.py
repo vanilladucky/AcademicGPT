@@ -84,10 +84,10 @@ def query_rag(query_text: str):
         sources[idx] = '|'.join(s.split('|')[:-1])
     sources.sort()
     sources = '  \n'.join(sources)
-    formatted_response = f"{response_text} \n\n ============================================== \n\n The sources cited are: \n\n {sources}"
+    formatted_response = f"{response_text} \n\n ============================================== \n\n Some relevant materials are: \n\n {sources}"
     print(formatted_response)
     return formatted_response
 
 
 if __name__ == "__main__":
-    main('What are several types of operating systems commonly found?')
+    main()
