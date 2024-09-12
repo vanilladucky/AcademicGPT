@@ -16,6 +16,13 @@
 ### The website to use this service can be found [here](http://13.211.4.184:8502/)
 ### **OR** you can run it on your local device by following the instructions below
 
+# Own custom usage
+
+### For students from other universities, you can follow these steps to add your own school's notes to the database. 
+### Create a folder called 'data' and add your pdf documents into it 
+### run `python3 populate_database.py`
+### wait for it to finish running and when done, you should have a chroma DB in your local computer
+
 # Local run
 
 `git clone https://github.com/vanilladucky/Academic_LLM.git`
