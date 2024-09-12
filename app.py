@@ -81,7 +81,7 @@ def main():
     text_input = st.text_input("Ask question")
     response_text = ""
     if text_input and st.session_state['prev'] != text_input:
-        print("Question submitted!")
+        print(f"Question submitted!: {text_input}")
         with st.spinner('searching for answers...'):
             response_text = query(text_input)
         st.write(response_text)
