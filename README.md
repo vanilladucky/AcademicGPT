@@ -44,6 +44,18 @@
 
 ### You are also to `git clone` my project and run it locally.
 ### Make sure to install both the python packages and node modules for the frontend and backend to run without any issues. 
+### You would also need some secret variables to run. These include:
+##### - CONNECTION_STRING (for MongoDB connection)
+##### - DATABASE_NAME 
+##### - OLLECTION_NAME 
+##### - USER_DB_NAME 
+##### - VECTORDB_NAME
+##### - HF_TOKEN (HuggingFace API token)
+##### - EMAIL (Email from which you send your verification codes from)
+##### - EMAIL_PASSWORD (App password for your email)
+##### - SECRET_KEY (for JWT token)
+##### - ALGORITHM (hashing algorithm for security)
+##### - ACCESS_TOKEN_EXPIRE_MINUTES
 
 ## Contact:
 
