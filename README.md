@@ -56,6 +56,7 @@
 ##### - SECRET_KEY (for JWT token)
 ##### - ALGORITHM (hashing algorithm for security)
 ##### - ACCESS_TOKEN_EXPIRE_MINUTES
+### Make sure to include these in the .env files
 
 ## Contact:
 
