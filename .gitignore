@@ -1,6 +1,7 @@
 *.pyc
 .DS_Store
 backup
-data/*
+backend/data/*
 .env
 chroma/*
+.test
