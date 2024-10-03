@@ -13,7 +13,6 @@ from langchain.retrievers.document_compressors import CrossEncoderReranker
 from langchain_community.cross_encoders import HuggingFaceCrossEncoder
 from langchain.retrievers import ContextualCompressionRetriever
 from langchain_mongodb import MongoDBAtlasVectorSearch
-from langchain_chroma import Chroma
 from pymongo import MongoClient
 import os
 from passlib.context import CryptContext
