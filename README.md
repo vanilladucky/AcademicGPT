@@ -26,6 +26,12 @@
 ### The AI model will also provide some lecture material sources it consulted to give you the answer so that you can look into the materials if you wish to dive deeper.
 ![alt text](frontend/public/sources.png)
 
+## Notable Features
+
+- **SOTA AI model**: Llama3 8 billion model, developed by Meta, is being used as the LLM behind the scenes, a model that is more than capable of providing you with an accurate answer
+- **RAG**: Retrieval-Augmented Generation built with Langchain will provide our LLM with the necessary context derived from a myriad of lecture notes. It is also equipped with the capability to rerank and pick out only a few highly informational material for our LLM to observe. 
+- **Free of Charge**: Currently all the external APIs I'm utilizing are free tier, eliminating any financial burden for users!
+
 # Open Source
 
 ### I have purposefully made this website only applicable for NTU students. This is because the data that the AI model will base off its answers from are NTU lecture notes and they are intellectual property solely for NTU students. 
