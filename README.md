@@ -23,7 +23,7 @@
 ### You can chat and ask any questions related to the courses mentioned in the website (more courses will be introduced in the future).
 ### The AI is equipped with memory feature so it remembers the previous conversations it had with you. Also, all your conversations will be stored so you can always come back to the website to continue on the conversation.
 ### The AI model will also provide some lecture material sources it consulted to give you the answer so that you can look into the materials if you wish to dive deeper.
-![alt text](front/public/sources.png)
+![alt text](frontend/public/sources.png)
 
 # Open Source
 
