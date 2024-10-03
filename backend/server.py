@@ -139,6 +139,9 @@ async def register(user: User):
     if user_data:
         raise HTTPException(status_code=310, detail="User already exists")
 
+    if user.username.split('@')[1] != 'e.ntu.edu.sg':
+        return {"message": "Only NTU students may register!"}
+
     if is_strong_password(user.password) == False:
         return {"message": "Weak password"}
 

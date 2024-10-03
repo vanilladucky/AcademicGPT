@@ -34,6 +34,10 @@ const Register = () => {
         setError("Password not strong enough. Must be longer than 8 characters, with at least one uppercase, lowercase letter, special digit and digit.");
         setSuccess("");
       }
+      else if (response.data.message == "Only NTU students may register!"){
+        setError("Only NTU students may register!");
+        setSuccess("");
+      }
       else if (response.data.message == "Email Sent!"){
         setSuccess("Email sent!");
         setError("");
