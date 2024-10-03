@@ -1,5 +1,6 @@
 # **AcademicGPT** 📚
 ## An AI companion for students - developed by a fellow student
+![alt text](frontend/public/logo_img.png)
 
 # Introduction 
 
@@ -41,4 +42,4 @@
 ## Contact:
 
 ### If you have any queries, problems, or suggestions please do reach out to me via my email below.
-##### KIMH0004@e.ntu.edu.sg
+### KIMH0004@e.ntu.edu.sg
