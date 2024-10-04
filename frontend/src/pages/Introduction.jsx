@@ -1,35 +1,18 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import TopNavBar from '../components/TopNavBar';
 
 function Introduction() {
+  useEffect(() => {
+    const imgElement = document.querySelector(".slide-in");
+    if (imgElement) {
+      imgElement.classList.add("slide-in-visible");
+    }
+  }, []);
+
   return (
     <div>
-      <header className="bg-dark text-white text-center pb-3">
-        <nav className="navbar navbar-light bg-dark" style={{ height: '10vh' }}>
-          <div className="container-fluid">
-            <a className="navbar-brand" href = '/' style={{font_family: 'Poppins', color:'white', fontWeight:'bold'}}>
-              AcademicGPT
-            </a>
-            <a 
-              className="navbar-brand ms-2" 
-              href="/introduction" 
-              style={{ fontFamily: 'Poppins', color: 'white', fontWeight: 'bold' }}
-            >
-              About
-            </a>
-            <a 
-              className="navbar-brand ms-auto" 
-              href="/login" 
-              style={{ fontFamily: 'Poppins', color: 'white', fontWeight: 'bold' }}
-            >
-              Login
-            </a>
-          </div>
-        </nav>
-        <h1 style={{font_family: 'Poppins', color:'white'}}>Welcome to AcademicGPT 📚</h1>
-        <p className="lead" style={{font_family: 'Poppins', color:'white'}}>An AI companion for students - developed by a fellow student</p>
-      </header>
-
+      <TopNavBar/>
       <section className="container py-5" style={{font_family: 'Poppins', color:'black'}}>
         <div className="row">
           <div className="col-md-6 text-start">
@@ -54,7 +37,7 @@ function Introduction() {
             <img
               src="/student_studying.png"
               alt="App Introduction"
-              className="img-fluid"
+              className="img-fluid slide-in"
             />
           </div>
         </div>
@@ -64,17 +47,17 @@ function Introduction() {
         <div className="container">
           <h2 className="text-center">Key Features</h2>
           <div className="row text-center py-4">
-            <div className="col-md-4">
+            <div className="col-md-4 hover-effect">
               <i className="bi bi-lightbulb-fill" style={{ fontSize: '3rem' }}></i>
               <h4>Extensive knowledge</h4>
               <p>AcademicGPT is equipped with specific knowledge of various different NTU courses.</p>
             </div>
-            <div className="col-md-4">
+            <div className="col-md-4 hover-effect">
               <i className="bi bi-code-slash" style={{ fontSize: '3rem' }}></i>
               <h4>Provides references</h4>
               <p>AcademicGPT will provide you with lecture materials relevant to your question.</p>
             </div>
-            <div className="col-md-4">
+            <div className="col-md-4 hover-effect">
               <i className="bi bi-graph-up" style={{ fontSize: '3rem' }}></i>
               <h4>Free to use</h4>
               <p>No need to worry about paying or any hidden paywalls.</p>

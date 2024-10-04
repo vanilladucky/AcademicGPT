@@ -80,7 +80,7 @@ const Login = () => {
     <div className=" vh-100 " style={{backgroundImage: "url('/library.png')", backgroundSize: 'cover', backgroundPosition: 'center', height: '100vh', color: '#fff',}}>
       <nav className="navbar navbar-light bg-transparent" style={{ height: '10vh' }}>
         <div className="container-fluid">
-          <a className="navbar-brand" href="/" style={{font_family: 'Poppins', color:'white', fontWeight:'bold'}}>
+          <a className="navbar-brand hover-effect-small" href="/" style={{font_family: 'Poppins', color:'white', fontWeight:'bold'}}>
             AcademicGPT
           </a>
         </div>

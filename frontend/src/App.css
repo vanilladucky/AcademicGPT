@@ -12,3 +12,30 @@ h1 {
 .fade-in {
   opacity: 1;
 }
+
+.hover-effect {
+  transition: transform 0.3s ease;
+}
+
+.hover-effect:hover {
+  transform: scale(1.2); /* Slightly enlarges the div on hover */
+}
+
+.hover-effect-small {
+  transition: transform 0.3s ease;
+}
+
+.hover-effect-small:hover {
+  transform: scale(1.06); /* Slightly enlarges the div on hover */
+}
+
+.slide-in {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.slide-in-visible {
+  opacity: 1;
+  transform: translateX(0);
+}

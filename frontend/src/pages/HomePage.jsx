@@ -8,18 +8,18 @@ function HomePage() {
     <div style={styles.container}>
       <nav className="navbar navbar-light bg-transparent" style={{ height: '10vh' }}>
         <div className="container-fluid">
-          <a className="navbar-brand" href = '/' style={{font_family: 'Poppins', color:'white', fontWeight:'bold'}}>
+          <a className="navbar-brand hover-effect-small" href = '/' style={{font_family: 'Poppins', color:'white', fontWeight:'bold'}}>
             AcademicGPT
           </a>
           <a 
-            className="navbar-brand ms-2" 
+            className="navbar-brand ms-2 hover-effect-small"  
             href="/introduction" 
             style={{ fontFamily: 'Poppins', color: 'white', fontWeight: 'bold' }}
           >
             About
           </a>
           <a 
-            className="navbar-brand ms-auto" 
+            className="navbar-brand ms-auto hover-effect-small" 
             href="/login" 
             style={{ fontFamily: 'Poppins', color: 'white', fontWeight: 'bold' }}
           >
