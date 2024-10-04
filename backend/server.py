@@ -67,6 +67,7 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 SECRET_KEY = os.getenv("SECRET_KEY")
 ALGORITHM = os.getenv("ALGORITHM")
 ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES"))
+SERVER_PORT = os.getenv("VITE_SERVER_PORT")
 
 # Models
 class User(BaseModel):
@@ -216,6 +217,7 @@ async def verify_code(request:VerifyRequest):
 origins = [
     "http://localhost",
     "http://localhost:5173",
+    SERVER_PORT
 ]
 
 app.add_middleware(
