@@ -21,7 +21,14 @@
 
 ### Please login with your NTU student email, and enter the verification code that will be sent to the email address you have entered.
 ### Once verified, you will be able to access the chatting feature. 
-### You can chat and ask any questions related to the courses mentioned in the website (more courses will be introduced in the future).
+### You can chat and ask any questions related to the CCDS courses mentioned in the website (more courses will be introduced in the future).
+### The courses currently available (as of 4 Oct 2024) is
+##### - Computer Architecture
+##### - Data Structures
+##### - Introduction to databases
+##### - Introduction to DSAI
+##### - Operating systems
+##### - Probability and Statistics
 ### The AI is equipped with memory feature so it remembers the previous conversations it had with you. Also, all your conversations will be stored so you can always come back to the website to continue on the conversation.
 ### The AI model will also provide some lecture material sources it consulted to give you the answer so that you can look into the materials if you wish to dive deeper.
 ![alt text](frontend/public/sources.png)
