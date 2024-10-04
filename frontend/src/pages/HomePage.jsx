@@ -20,14 +20,14 @@ function HomePage() {
           </a>
           <a 
             className="navbar-brand ms-auto hover-effect-small" 
-            href="/login" 
+            href="/register" 
             style={{ fontFamily: 'Poppins', color: 'white', fontWeight: 'bold' }}
           >
             Register
           </a>
           <a 
             className="navbar-brand ms-2 hover-effect-small" 
-            href="/register" 
+            href="/login" 
             style={{ fontFamily: 'Poppins', color: 'white', fontWeight: 'bold' }}
           >
             Login
