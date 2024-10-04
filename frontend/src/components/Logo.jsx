@@ -12,7 +12,7 @@ function Logo() {
             
             {/* Centered logo */}
             <div className="text-center" style={{ flex: 4 }}>
-                <span className="align-middle fs-1" style={{ fontFamily: 'Georgia', fontWeight: 'bold', color: '#fdfefe' }}>
+                <span className="align-middle fs-3 fs-sm-2" style={{ fontFamily: 'Georgia', fontWeight: 'bold', color: '#fdfefe' }}>
                     AcademicGPT 📚
                 </span>
             </div>
@@ -20,7 +20,7 @@ function Logo() {
             {/* Logout button on the right */}
             <div style={{ flex: 1 }} className="d-flex justify-content-end">
                 <button 
-                    className="btn btn-danger" 
+                    className="btn btn-danger btn-sm btn-md" 
                     onClick={handleLogout}
                 >
                     Logout

@@ -403,6 +403,6 @@ async def LLMrespond(data: ConvoModel):
         sources[idx] = ''.join(s.split('/')[1:])
     sources.sort()
     sources = '  \n'.join(sources)
-    formatted_response = f"{response_text}\n\n==============================================\n\nSome relevant materials are:\n\n{sources}"
+    formatted_response = f"{response_text}\n\nSome relevant materials are:\n\n{sources}"
     print('Answer sent!\n')
     return {"response": formatted_response}

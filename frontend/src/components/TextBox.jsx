@@ -56,7 +56,7 @@ function TextBox({convo, setConvo, setConvoID, setHistoryList}){
     };
 
     return (
-                <div style={{width:'55%'}}>
+      <div className="col-12 col-sm-8 col-md-6" style={{ maxWidth: '70%' }}>
                     <input type="question"
                             class="form-control rounded border-dark" 
                             id="question_asked" 

@@ -34,7 +34,7 @@ function Chat() {
   return (
     <div className="container-fluid" style={{ fontFamily: 'Poppins', color: 'white'}}>
       <div className="row flex-nowrap">
-          <div className="col-auto col-md-3 col-xl-2 bg-dark" style={{ height: '100vh' }}>
+          <div className="d-none d-md-block col-auto col-md-3 col-xl-2 bg-dark" style={{ height: '100vh' }}>
             <ChatHistory setConvo={setConvo} historyList={historyList} setConvoID={setConvoID}/>
           </div>
           <div className="col m-0 p-0">

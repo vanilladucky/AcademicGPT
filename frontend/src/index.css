@@ -72,3 +72,29 @@ button:focus-visible {
   height:100%;
 }
 
+
+/* Hide sidebar on small screens */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+}
+
+/* Show sidebar on larger screens */
+@media (min-width: 768px) {
+  .sidebar {
+    display: block;
+  }
+}
+
+/* Optional: Add a button to toggle sidebar on small screens */
+.toggle-sidebar {
+  display: block;
+  margin: 10px;
+}
+
+@media (min-width: 768px) {
+  .toggle-sidebar {
+    display: none; /* Hide button on larger screens */
+  }
+}
