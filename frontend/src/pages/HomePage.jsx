@@ -23,6 +23,13 @@ function HomePage() {
             href="/login" 
             style={{ fontFamily: 'Poppins', color: 'white', fontWeight: 'bold' }}
           >
+            Register
+          </a>
+          <a 
+            className="navbar-brand ms-2 hover-effect-small" 
+            href="/register" 
+            style={{ fontFamily: 'Poppins', color: 'white', fontWeight: 'bold' }}
+          >
             Login
           </a>
         </div>
