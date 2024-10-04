@@ -284,6 +284,7 @@ class query_response(BaseModel):
     _id: Optional[str] = None
     user: str 
     convo: list[dict]
+    time: Optional[datetime] = None
 
 @app.get("/api/retrieve_all_chat/{user_id}", response_description = "Obtain all past chat history to display at the start")
 async def retrieve_all(user_id:str):
@@ -309,6 +310,7 @@ async def retrieve(id:str):
 
 @app.post("/convo/", response_description = "Add new convo")
 async def upload(item: query_response):
+    item.time = datetime.now()
     new_insert = await app.mongodb.insert_one(item.model_dump())
     created_insert = await app.mongodb.find_one({'_id': new_insert.inserted_id})
     if created_insert:
@@ -339,6 +341,7 @@ async def update_convo(id: str, item: query_response):
 class ConvoModel(BaseModel):
     query_text: str
     convo: List[Dict]
+    
 
 def create_vector_search():
     """
