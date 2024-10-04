@@ -14,7 +14,7 @@ const VerificationCode = () => {
     e.preventDefault();
     setRunning(true);
     try{
-      await fetch("http://localhost:8000/send_email",{
+      await fetch(`${import.meta.env.VITE_SERVER_PORT}/send_email`,{
         method:"POST",
         headers: {"content-type": "application/json",'Access-Control-Allow-Origin':'*'},
         body: JSON.stringify({
@@ -34,7 +34,7 @@ const VerificationCode = () => {
 
     try {
       setRunning(true);
-      const res = await fetch('http://127.0.0.1:8000/verify', {
+      const res = await fetch(`${import.meta.env.VITE_SERVER_PORT}/verify`, {
               method:"POST",
               headers: {"content-type": "application/json",'Access-Control-Allow-Origin':'*'},
               body: JSON.stringify({

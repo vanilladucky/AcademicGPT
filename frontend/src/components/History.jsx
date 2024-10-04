@@ -2,7 +2,7 @@ function History({convoID, question, setConvo, setConvoID}) {
 
     const retrieve = async () => {
         try {
-            const response = await fetch(`http://127.0.0.1:8000/api/retrieve/${convoID}`, {
+            const response = await fetch(`${import.meta.env.VITE_SERVER_PORT}/api/retrieve/${convoID}`, {
               method: 'GET',
               headers: {"content-type": "application/json",'Access-Control-Allow-Origin':'*'},
             })

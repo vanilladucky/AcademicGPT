@@ -9,7 +9,7 @@ function ChatComponent({chatconversation, convoID}){
     useEffect(() => {
         const postConvo = async() => {
             if (convoID != '' && chatconversation.length > 0 && chatconversation.slice(-1)[0]['user']=="LLM"){
-                await fetch(`http://127.0.0.1:8000/convo/${convoID}`, {
+                await fetch(`${import.meta.env.VITE_SERVER_PORT}/convo/${convoID}`, {
                   method:"PUT",
                   headers: {"content-type": "application/json",'Access-Control-Allow-Origin':'*'},
                   body: JSON.stringify({

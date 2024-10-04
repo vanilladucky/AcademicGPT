@@ -11,7 +11,7 @@ function TextBox({convo, setConvo, setConvoID, setHistoryList}){
           setConvo((prevData)=>[...prevData, ...[{"text": question, "user": "User"}, {"text": "Thinking...", "user": "Thinking"}]]);
           // Make GET request when Enter is pressed
           try {
-            const response = await fetch(`http://127.0.0.1:8000/LLM_response/`, {
+            const response = await fetch(`${import.meta.env.VITE_SERVER_PORT}/LLM_response/`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ function TextBox({convo, setConvo, setConvoID, setHistoryList}){
             //console.log(childdata)
             // create convo in MongoDB
             if (convo.length == 0) {
-              const convoID = await fetch('http://127.0.0.1:8000/convo/', {
+              const convoID = await fetch(`${import.meta.env.VITE_SERVER_PORT}/convo/`, {
               method:"POST",
               headers: {"content-type": "application/json",'Access-Control-Allow-Origin':'*'},
               body: JSON.stringify({

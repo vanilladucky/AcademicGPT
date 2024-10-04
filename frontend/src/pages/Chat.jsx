@@ -13,7 +13,7 @@ function Chat() {
   useEffect(()=>{
     const fetchchats = async() => {
       try{
-        const chats = await fetch(`http://127.0.0.1:8000/api/retrieve_all_chat/${localStorage.getItem("userID")}`, {
+        const chats = await fetch(`${import.meta.env.VITE_SERVER_PORT}/api/retrieve_all_chat/${localStorage.getItem("userID")}`, {
           method: "GET",
           headers: {"content-type": "application/json",'Access-Control-Allow-Origin':'*'},
         }).then(response=>response.json())

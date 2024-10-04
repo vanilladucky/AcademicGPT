@@ -15,7 +15,7 @@ const Login = () => {
   const toVerify = async () => {
     setWait(true)
     try{
-      await fetch("http://localhost:8000/send_email",{
+      await fetch(`${import.meta.env.VITE_SERVER_PORT}/send_email`,{
         method:"POST",
         headers: {"content-type": "application/json",'Access-Control-Allow-Origin':'*'},
         body: JSON.stringify({
@@ -30,10 +30,11 @@ const Login = () => {
   }
 
   const handleSubmit = async (e) => {
+    console.log(import.meta.env.VITE_SERVER_PORT)
     setWait(true)
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:8000/login", {
+      const response = await fetch(`${import.meta.env.VITE_SERVER_PORT}/login`, {
         method:"POST",
         headers: {"content-type": "application/json",'Access-Control-Allow-Origin':'*'},
         body: JSON.stringify({
@@ -43,7 +44,7 @@ const Login = () => {
       }).then(response => response.json());
       if (response.success) {
         try {
-          const user_id = await fetch(`http://localhost:8000/get_user?user_name=${username}`, {
+          const user_id = await fetch(`${import.meta.env.VITE_SERVER_PORT}/get_user?user_name=${username}`, {
           method:"GET",
           headers: {"content-type": "application/json",'Access-Control-Allow-Origin':'*'}
         }).then(response=>response.json())

@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from datetime import datetime
 from fastapi import HTTPException
 from bson import ObjectId
 import asyncio
@@ -71,6 +72,7 @@ ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES"))
 class User(BaseModel):
     username: str
     password: str
+    register_date: Optional[datetime] = None
     verification_code: Optional[str] = None
     verified: Optional[bool] = None
 
@@ -146,7 +148,11 @@ async def register(user: User):
 
     hashed_password = get_password_hash(user.password)
     verification_code = str(random.randint(100000, 999999))
-    app.user.insert_one({"username": user.username, "password": hashed_password, "verification_code": verification_code, "verified": False})
+    app.user.insert_one({"username": user.username, 
+                        "password": hashed_password, 
+                        "register_date": datetime.now(),
+                        "verification_code": verification_code, 
+                        "verified": False})
     send_email(user.username, verification_code)
     return {"message": "Email Sent!"}
 

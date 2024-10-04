@@ -16,6 +16,7 @@ import HomePage from "./pages/HomePage";
 import Introduction from "./pages/Introduction";
 
 const router = createBrowserRouter([
+  
   {
     path: "/chat",
     element: <ProtectedRoute/>,
