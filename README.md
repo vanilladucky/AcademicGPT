@@ -40,6 +40,23 @@
 ### In order to populate the MongoDB vector database with materials, simply add the pdf documents into the 'data' folder in the 'backend' folder and run `python3 populate_mongoDB.py`.
 ### This will embed all your documents and store it in MongoDB, minimizing computational resources needed on your local computer.
 
+# Tech stack 
+
+## Frontend 
+##### - ReactJS
+##### - Bootstrap
+
+## Backend
+##### - FastAPI
+
+## Database
+##### - MongoDB (for vector database also)
+
+## LLM
+##### - HuggingFace API
+
+### Hosted on AWS EC2 with nginx and uvicorn
+
 # Local run
 
 ### You are also to `git clone` my project and run it locally.
