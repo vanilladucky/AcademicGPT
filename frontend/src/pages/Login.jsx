@@ -51,8 +51,8 @@ const Login = () => {
         console.log(user_id)
         localStorage.setItem("userID", user_id.user_id);
         localStorage.setItem("token", response.access_token);
-        setWait(false)
         window.location.href = '/chat';
+        setWait(false)
         } catch(err){
           setWait(false)
           console.log(err)
